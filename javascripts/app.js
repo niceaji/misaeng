@@ -5,7 +5,7 @@ var su = -1
 ,   $suText = $('.suText')
 ,   $body = $(document.body)
 ,   $chart = $("#chart")
-,   chart
+,   chart = ''
 ,   EPISODES = episodes.data.webtoonEpisodes.reverse()
 ,   WEBTOON_LINK_PREFIX = 'http://cartoon.media.daum.net/webtoon/viewer/'
 
@@ -86,10 +86,9 @@ $(document).ready(function(){
     $('.button-wrap .prev').click(function(){
         location.href = '#'+ (su-1);
     });
-<<<<<<< HEAD
     $('.button-wrap .webtoon').click(function(){
         location.href = getWebtoonLink();
-=======
+    });
 
     chart = new Highcharts.Chart({
     	"chart": {
@@ -146,7 +145,6 @@ $(document).ready(function(){
     		"name": "순추천",
     		"data": []
     	}]
->>>>>>> fe51a1c5208bc0055b015cb0484aa7f48ff96b77
     });
 });
 
