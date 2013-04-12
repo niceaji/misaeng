@@ -8,7 +8,7 @@
 * [Daum에서 웹툰 정주행 하기](http://cartoon.media.daum.net/webtoon/view/miseng)
 
 
-## 어떻게 댓글들이 보여지나요?
+## 어떤 댓글들이 보여지나요?
 
 * [http://gluebyte.tumblr.com/post/47760646383](http://gluebyte.tumblr.com/post/47760646383)
 
