@@ -3,6 +3,7 @@ var su = -1
 ,   $wrap = $('#main_content .wrap')
 ,   $su = $('#main_content .su')
 ,   $body = $(document.body)
+,   EPISODES = episodes.data.webtoonEpisodes.reverse()
 
 function loadComment(){
 
@@ -24,7 +25,7 @@ function loadComment(){
         txt = txt.replace(/--------/g,'</blockquote><hr>')
                  .replace(/\r\r/g,'<br><blockquote>')
 
-        $su.html( (su===-1) ? '예고편' : su+' 수' );
+        $su.html( '<a href="http://cartoon.media.daum.net/webtoon/viewer/'+EPISODES[(su+1)].id+'">' + ((su===-1) ? '예고편' : su+' 수') +'</a>' );
         $wrap.html(txt);
         $body.animate({ scrollTop: 0 });
     });
