@@ -10,5 +10,5 @@
 
 ## 어떻게 댓글들이 보여지나요?
 
-* [http://gluebyte.tumblr.com/post/47760646383](http://niceaji.github.io/misaeng)
+* [http://gluebyte.tumblr.com/post/47760646383](http://gluebyte.tumblr.com/post/47760646383)
 
