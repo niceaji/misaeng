@@ -2,8 +2,17 @@ var su = -1
 ,   MAX_SU = 80
 ,   $wrap = $('#main_content .wrap')
 ,   $su = $('#main_content .su')
+,   $suText = $('.suText')
 ,   $body = $(document.body)
 ,   EPISODES = episodes.data.webtoonEpisodes.reverse()
+,   WEBTOON_LINK_PREFIX = 'http://cartoon.media.daum.net/webtoon/viewer/'
+
+function getWebtoonLink(){
+    return WEBTOON_LINK_PREFIX+EPISODES[(su+1)].id;
+}
+function getSuText(){
+    return ((su===-1) ? '예고편' : su+' 수');
+}
 
 function loadComment(){
 
@@ -25,7 +34,8 @@ function loadComment(){
         txt = txt.replace(/--------/g,'</blockquote><hr>')
                  .replace(/\r\r/g,'<br><blockquote>')
 
-        $su.html( '<a href="http://cartoon.media.daum.net/webtoon/viewer/'+EPISODES[(su+1)].id+'">' + ((su===-1) ? '예고편' : su+' 수') +'</a>' );
+        $su.html( '<a href="'+getWebtoonLink()+'">' + getSuText() +'</a>' );
+        $suText.text( getSuText() );
         $wrap.html(txt);
         $body.animate({ scrollTop: 0 });
     });
@@ -45,7 +55,9 @@ $(document).ready(function(){
     $('.button-wrap .prev').click(function(){
         location.href = '#'+ (su-1);
     });
-
+    $('.button-wrap .webtoon').click(function(){
+        location.href = getWebtoonLink();
+    });
 });
 
 
