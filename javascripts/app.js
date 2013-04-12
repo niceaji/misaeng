@@ -37,7 +37,7 @@ function loadComment(){
         $su.html( '<a href="'+getWebtoonLink()+'">' + getSuText() +'</a>' );
         $suText.text( getSuText() );
         $wrap.html(txt);
-        $body.animate({ scrollTop: 0 });
+        $body.scrollTop(0);
     });
 
 }
