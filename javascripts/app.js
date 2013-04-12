@@ -3,6 +3,9 @@ var su = -1
 ,   $wrap = $('#main_content .wrap')
 ,   $su = $('#main_content .su')
 ,   $body = $(document.body)
+,   $chart = $("#chart")
+,   chart
+
 
 function loadComment(){
 
@@ -20,7 +23,7 @@ function loadComment(){
         file = 'comment/' + file + '.txt'
 
     $.get(file, function(txt){
-
+    	renderChart(txt);
         txt = txt.replace(/--------/g,'</blockquote><hr>')
                  .replace(/\r\r/g,'<br><blockquote>')
 
@@ -29,6 +32,35 @@ function loadComment(){
         $body.animate({ scrollTop: 0 });
     });
 
+}
+
+function renderChart(txt){
+	var s1 = chart.get("s1"),
+		s2 = chart.get("s2"),
+		s3 = chart.get("s3"),
+		d1 = [],
+		d2 = [],
+		d3 = [],
+		xAxis = chart.get("xAxis"),
+		cate = [];
+	
+	chart.series[0].data.length = chart.series[1].data.length = chart.series[2].data.length = 0;
+	
+	txt.replace(/(.*)\s\((\+\d+) (\-\d+)\)/ig, function(){
+		var nick = arguments[1],
+			n1 = parseInt(arguments[2], 10),
+			n2 = parseInt(arguments[3], 10);
+		cate.push(nick);
+		d1.push({ "name": nick, "y": n1 });
+		d2.push({ "name": nick, "y": n2 });
+		d3.push({ "name": nick, "y": n1 + n2 });
+	});
+	
+	s1.setData(d1);
+	s2.setData(d2);
+	s3.setData(d3);
+	xAxis.setCategories(cate);
+	chart.redraw();
 }
 
 $(window).on('hashchange', loadComment);
@@ -45,6 +77,62 @@ $(document).ready(function(){
         location.href = '#'+ (su-1);
     });
 
+    chart = new Highcharts.Chart({
+    	"chart": {
+    		"renderTo": "chart"
+    	},
+    	"colors": [ "#212121", "#C1C1C1", "#FFF" ],
+    	"credits": {
+    		"enabled": false
+    	},
+    	"title": {
+    		"text": ""
+    	},
+    	"legend": {
+    		"enabled": false
+    	},
+    	"xAxis": {
+    		"id": "xAxis",
+    		"labels": {
+    			"staggerLines": 2
+    		}
+    	},
+    	"yAxis": {
+    		"endOnTick": false,
+    		"startOnTick": false,
+    		"title": {
+    			"enabled": false
+    		}
+    	},
+    	"plotOptions": {
+    		"area": {
+    			"marker": {
+    				"enabled": false
+    			}
+    		},
+    		"line": {
+    			"marker": {
+    				"enabled": false
+    			}
+    		}
+    	},
+    	"series": [ {
+    		"id": "s1",
+    		"type": "area",
+    		"name": "추천",
+    		"data": []
+    	} , {
+    		"id": "s2",
+    		"type": "area",
+    		"name": "반대",
+    		"data": []
+    	} , {
+    		"id": "s3",
+    		"type": "line",
+    		"name": "순추천",
+    		"data": []
+    	}]
+    });
 });
 
 

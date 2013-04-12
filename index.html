@@ -7,11 +7,11 @@
     <meta name="description" content="Misaeng : 웹툰 미생 베스트 댓글 모음" />
     <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <title>웹툰 미생 베스트 댓글</title>
   </head>
-
   <body>
+  
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
@@ -30,6 +30,8 @@
 <!--         <blockquote>
         </blockquote> -->
       </section>
+      
+      <div id="chart" class="container" style="height:200px;"></div>
       <div class="button-wrap">
       <button class="btn prev"><i class="icon-arrow-left"></i> 이전</button>
       <button class="btn next">다음 <i class="icon-arrow-right"></i></button>
@@ -56,8 +58,8 @@
     } catch(err) {}
     </script>
 
-    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
     <script type="text/javascript" src="javascripts/app.js"></script>
-
   </body>
 </html>
