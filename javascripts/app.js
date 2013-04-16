@@ -12,6 +12,9 @@ var su = -1
 function getWebtoonLink(){
     return WEBTOON_LINK_PREFIX+EPISODES[(su+1)].id;
 }
+function getWebtoonThumb(){
+    return EPISODES[(su+1)].thumbnailImage.url;
+}
 function getSuText(){
     return ((su===-1) ? '예고편' : su+' 수');
 }
@@ -36,7 +39,7 @@ function loadComment(){
         txt = txt.replace(/--------/g,'</blockquote><hr>')
                  .replace(/\r\r/g,'<br><blockquote>')
 
-        $su.html( '<a href="'+getWebtoonLink()+'">' + getSuText() +'</a>' );
+        $su.html( '<img style="width:152px;height:90px;" src="'+getWebtoonThumb()+'" /><a href="'+getWebtoonLink()+'">' + getSuText() +'</a>' );
         $suText.text( getSuText() );
         $wrap.html(txt);
         $body.scrollTop(0);
